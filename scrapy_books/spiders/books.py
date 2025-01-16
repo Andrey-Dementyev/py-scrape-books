@@ -54,9 +54,8 @@ class BooksSpider(scrapy.Spider):
             "price": response.meta["price"],
             "amount_in_stock": amount_in_stock,
             "rating": response.meta["rating"],
-            "description": response.css(
-                "#product_description + p::text").get(),
-            "upc": response.css("th:contains('UPC') + td::text").get(
+            "description": response.css("#product_description + p::text").get(
                 default="No description available"
-            )
+            ),
+            "upc": response.css("th:contains('UPC') + td::text").get(),
         }
